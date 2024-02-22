@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-between my-4">
+  <h1>My lists</h1>
+  <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary btn-sm text-center" %>
+</div>
+
+<div class="row">
+  <% @lists.each do |list| %>
+    <div class="col-md-4 mb-4">
+      <div class="card" style="position: relative;">
+        <%= image_tag "tickets.jpg", class: "card-img-top" %> <!-- Insérer l'image -->
+        <div class="card-body" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; width: 100%;">
+          <p class="card-text" style="font-weight: bold;">
+            <strong><%= link_to list.name, list_path(list), style: "color: white; text-decoration: none;" %></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
