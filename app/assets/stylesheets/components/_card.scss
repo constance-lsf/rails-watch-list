@@ -9,3 +9,17 @@
 //   width: calc(33.33% - 20px); /* Pour que chaque carte occupe environ un tiers de la largeur de l'écran avec de l'espace entre elles */
 //   margin-bottom: 20px; /* Ajouter de la marge en bas */
 // }
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}

@@ -1,21 +1,33 @@
-<h1><%= @list.name %></h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path("tickets.jpg") %>)">
+  <h1><%= @list.name %></h1>
+</div>
 
-<div class="row">
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="col-md-4">
-      <div class="card mb-3 shadow">
-        <%= image_tag "tickets.jpg", class: "card-img-top" %> <!-- Insérer l'image -->
-        <div class="card-body">
-          <h3 class="card-title"><%= bookmark.movie.title %></h3>
-          <p class="card-text"><%= bookmark.movie.overview %></p>
-          <div class="d-flex justify-content-between align-items-start">
-            <p class="card-text"><%= bookmark.comment %></p>
-            <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete ?"}, class: "btn btn-link text-danger font-weight-bold" %>
+<div class="container m-5">
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-success text-white mb-4" %>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-md-6">
+        <div class="card h-100 mb-1 shadow" style="width: 90%;">
+          <%= image_tag bookmark.movie.poster_url, style: "height: 200px; object-fit: cover;" %>
+          <div class="card-body">
+            <p class="card-title"><strong><%= bookmark.movie.title %></strong></p>
+            <p class="card-text text-secondary"><%= bookmark.movie.overview %></p>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-quote-left me-2"></i>
+              <p class="card-text mb-0"><%= bookmark.comment %></p>
+              <%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Delete ?"}, class: "btn btn-link text-danger font-weight-bold ms-auto" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<%= link_to "Back to my lists", lists_path, class: "btn btn-secondary btn-sm" %>
+  <div class="my-5">
+    <%= link_to "Back to my lists", lists_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+</div>
